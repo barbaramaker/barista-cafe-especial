@@ -106,6 +106,7 @@ fun prepararCafe() {
         val diferencaTemperatura = temperatura - 65
 
         println("Diferença da temperatura ideal: $diferencaTemperatura°C")
+        println()
 
         var pontos = 0
         var percentualGorjeta = 0
@@ -130,6 +131,8 @@ fun prepararCafe() {
         } else {
             println("Temperatura inadequada!")
         }
+
+        println()
 
         when (pontos) {
             3 -> {
@@ -158,11 +161,15 @@ fun prepararCafe() {
             }
         }
 
+        println()
+
         val valorGorjeta = valorPedido * percentualGorjeta / 100
         val valorTotal = valorPedido + valorGorjeta
 
         println("Valor da gorjeta: R$ $valorGorjeta")
         println("Valor total: R$ $valorTotal")
+
+        println()
 
         tentativas--
 
