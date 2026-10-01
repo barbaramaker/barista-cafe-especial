@@ -99,6 +99,7 @@ fun prepararCafe() {
         val temperatura = entradaTemperatura
 
         val proporcao = leite / cafe
+        val proporcaoPerfeita = proporcao == 10.0
 
         println()
         println("Sua proporção é: $proporcao ml/g")
@@ -111,11 +112,11 @@ fun prepararCafe() {
         var pontos = 0
         var percentualGorjeta = 0
 
-        if (cafe >= 18 && cafe <= 22) {
+        if (cafe < 18 || cafe > 22) {
+            println("Quantidade de café inadequada!")
+        } else {
             println("Quantidade de café adequada!")
             pontos++
-        } else {
-            println("Quantidade de café inadequada!")
         }
 
         if (leite >= 180 && leite <= 220) {
@@ -136,10 +137,16 @@ fun prepararCafe() {
 
         when (pontos) {
             3 -> {
-                println("Receita perfeita!")
-                println("Gorjeta: 20%")
-                percentualGorjeta = 20
-                receitaPerfeita = true
+                if (proporcaoPerfeita) {
+                    println("Receita perfeita!")
+                    println("Gorjeta: 20%")
+                    percentualGorjeta = 20
+                    receitaPerfeita = true
+                } else {
+                    println("Receita boa, mas a proporção não está perfeita.")
+                    println("Gorjeta: 10%")
+                    percentualGorjeta = 10
+                }
             }
 
             2 -> {
@@ -173,7 +180,7 @@ fun prepararCafe() {
 
         tentativas--
 
-        if (tentativas > 0) {
+        if (tentativas > 0 && !receitaPerfeita) {
             if (tentativas % 2 == 0) {
             println("Você está com um número par de tentativas restantes.")
             } else {
